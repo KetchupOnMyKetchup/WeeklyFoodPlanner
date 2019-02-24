@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceAssemblyReference>true</ProduceAssemblyReference>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.62955-pre2" />  
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\GroceryPage.xaml.cs">
+      <DependentUpon>GroceryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlannerPage.xaml.cs">
+      <DependentUpon>PlannerPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>
