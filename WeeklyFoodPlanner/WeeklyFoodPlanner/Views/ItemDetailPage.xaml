@@ -6,9 +6,9 @@
 
     <StackLayout Spacing="20" Padding="15">
         <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Item.Text}" FontSize="Small"/>
+        <Label Text="{Binding Recipe.Name}" FontSize="Small"/>
         <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Item.Description}" FontSize="Small"/>
+        <Label Text="{Binding Recipe.Description}" FontSize="Small"/>
         <Button Text="Click Me" Clicked="Button_Clicked" />
     </StackLayout>
     

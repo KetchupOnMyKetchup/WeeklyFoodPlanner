@@ -6,11 +6,13 @@ namespace WeeklyFoodPlanner.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Recipe Item { get; set; }
-        public ItemDetailViewModel(Recipe item = null)
+        public Recipe Recipe { get; set; }
+        public string Name { get; }
+        public ItemDetailViewModel(Recipe recipe = null)
         {
-            Title = item?.Name;
-            Item = item;
+            Title = recipe?.Name;
+            Name = recipe.Name;
+            Recipe = recipe;
         }
     }
 }

@@ -23,7 +23,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
-                            <Label Text="{Binding Text}" 
+                            <Label Text="{Binding Name}" 
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
