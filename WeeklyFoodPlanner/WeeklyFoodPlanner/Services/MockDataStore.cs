@@ -15,7 +15,11 @@ namespace WeeklyFoodPlanner.Services
             recipes = new List<Recipe>();
             var mockRecipes = new List<Recipe>
             {
-                new Recipe { Id = Guid.NewGuid().ToString(), Name = "Breakfast Quiche", Description="Sausage, egg, and spinach." },
+                new Recipe { Id = Guid.NewGuid().ToString(), Name = "Breakfast Quiche", Description="Sausage, egg, and spinach.", Ingredients = new List<Ingredient>
+                    {
+                        new Ingredient {  }
+                    }
+                },
                 new Recipe { Id = Guid.NewGuid().ToString(), Name = "White Bean Soup", Description="White beans in soup." },
                 new Recipe { Id = Guid.NewGuid().ToString(), Name = "Garlic Honey Salmon", Description="Pan seared salmon." }
             };
