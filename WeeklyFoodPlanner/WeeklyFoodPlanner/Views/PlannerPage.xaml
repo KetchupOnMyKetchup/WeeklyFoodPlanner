@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeeklyFoodPlanner.Views.PlannerPage"
              xmlns:vm="clr-namespace:WeeklyFoodPlanner.ViewModels"
-             BackgroundColor="#404040"
              Title="{Binding Title}">
     
     <ContentPage.BindingContext>
@@ -15,6 +14,7 @@
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="Accent">#96d1ff</Color>
             <Color x:Key="LightTextColor">#999999</Color>
+            
             <Style x:Key="plainButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="#eee"/>
                 <Setter Property="TextColor" Value="Black" />
@@ -59,36 +59,37 @@
             <Button Text = "T" Grid.Row="0" Grid.Column="4" Style="{StaticResource darkerButton}" />
             <Button Text = "F" Grid.Row="0" Grid.Column="5" Style="{StaticResource orangeButton}" />
             <Button Text = "S" Grid.Row="0" Grid.Column="6" Style="{StaticResource darkerButton}" />
+
+            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
+                <ListView x:Name="ItemsListView"
+                    ItemsSource="{Binding Items}"
+                    VerticalOptions="FillAndExpand"
+                    HasUnevenRows="true"
+                    RefreshCommand="{Binding LoadItemsCommand}"
+                    IsPullToRefreshEnabled="true"
+                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                    CachingStrategy="RecycleElement"
+                    ItemSelected="OnItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding Name}" 
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                    <Label Text="{Binding Description}" 
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                    FontSize="13" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
         </Grid>
         
     </ContentPage.Content>
-    <StackLayout>
-        <ListView x:Name="ItemsListView"
-                ItemsSource="{Binding Items}"
-                VerticalOptions="FillAndExpand"
-                HasUnevenRows="true"
-                RefreshCommand="{Binding LoadItemsCommand}"
-                IsPullToRefreshEnabled="true"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                CachingStrategy="RecycleElement"
-                ItemSelected="OnItemSelected">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding Name}" 
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
-                            <Label Text="{Binding Description}" 
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
 
 </ContentPage>
