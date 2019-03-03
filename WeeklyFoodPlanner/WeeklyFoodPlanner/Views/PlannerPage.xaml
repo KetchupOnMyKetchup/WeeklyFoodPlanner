@@ -52,13 +52,13 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <Button Text = "S" Grid.Row="0" Grid.Column="0" Style="{StaticResource darkerButton}" />
-            <Button Text = "M" Grid.Row="0" Grid.Column="1" Style="{StaticResource darkerButton}" />
-            <Button Text = "T" Grid.Row="0" Grid.Column="2" Style="{StaticResource darkerButton}" />
-            <Button Text = "W" Grid.Row="0" Grid.Column="3" Style="{StaticResource darkerButton}" />
-            <Button Text = "T" Grid.Row="0" Grid.Column="4" Style="{StaticResource darkerButton}" />
-            <Button Text = "F" Grid.Row="0" Grid.Column="5" Style="{StaticResource orangeButton}" />
-            <Button Text = "S" Grid.Row="0" Grid.Column="6" Style="{StaticResource darkerButton}" />
+            <Button Text = "S" Grid.Row="0" Grid.Column="0" Style="{DynamicResource sunBtn}" />
+            <Button Text = "M" Grid.Row="0" Grid.Column="1" Style="{DynamicResource monBtn}" />
+            <Button Text = "T" Grid.Row="0" Grid.Column="2" Style="{DynamicResource tuesBtn}" />
+            <Button Text = "W" Grid.Row="0" Grid.Column="3" Style="{DynamicResource wedBtn}" />
+            <Button Text = "T" Grid.Row="0" Grid.Column="4" Style="{DynamicResource thursBtn}" />
+            <Button Text = "F" Grid.Row="0" Grid.Column="5" Style="{DynamicResource friBtn}" />
+            <Button Text = "S" Grid.Row="0" Grid.Column="6" Style="{DynamicResource satBtn}" />
 
             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
                 <ListView x:Name="ItemsListView"

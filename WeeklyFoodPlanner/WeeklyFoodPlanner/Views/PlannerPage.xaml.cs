@@ -14,7 +14,47 @@ namespace WeeklyFoodPlanner.Views
         {
             InitializeComponent();
 
+            HighlightDayOfTheWeek();
+
             BindingContext = viewModel = new ItemsViewModel();
+        }
+
+        private void HighlightDayOfTheWeek()
+        {
+            DayOfWeek today = DateTime.Today.DayOfWeek;
+            
+            Resources["sunBtn"] = Resources["darkerButton"];
+            Resources["monBtn"] = Resources["darkerButton"];
+            Resources["tuesBtn"] = Resources["darkerButton"];
+            Resources["wedBtn"] = Resources["darkerButton"];
+            Resources["thursBtn"] = Resources["darkerButton"];
+            Resources["friBtn"] = Resources["darkerButton"];
+            Resources["satBtn"] = Resources["darkerButton"];
+
+            switch (today)
+            {
+                case DayOfWeek.Sunday:
+                    Resources["sunBtn"] = Resources["orangeButton"];
+                    break;
+                case DayOfWeek.Monday:
+                    Resources["monBtn"] = Resources["orangeButton"];
+                    break;
+                case DayOfWeek.Tuesday:
+                    Resources["tuesBtn"] = Resources["orangeButton"];
+                    break;
+                case DayOfWeek.Wednesday:
+                    Resources["wedBtn"] = Resources["orangeButton"];
+                    break;
+                case DayOfWeek.Thursday:
+                    Resources["thursBtn"] = Resources["orangeButton"];
+                    break;
+                case DayOfWeek.Friday:
+                    Resources["friBtn"] = Resources["orangeButton"];
+                    break;
+                case DayOfWeek.Saturday:
+                    Resources["satBtn"] = Resources["orangeButton"];
+                    break;
+            }
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
