@@ -3,11 +3,9 @@ using System.Collections.Generic;
 
 namespace WeeklyFoodPlanner.Models
 {
-    public class Ingredient
+    public class Ingredient : BaseEntity
     {
-        public string Name { get; set; }
         public int Quantity { get; set; }
         public HelperEnums.QuantityType QuantityType { get; set; }
     }
-    
 }

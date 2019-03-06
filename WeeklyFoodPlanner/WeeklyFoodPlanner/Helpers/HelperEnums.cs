@@ -22,5 +22,16 @@ namespace WeeklyFoodPlanner.Models
             Tablespoons,
             Teaspoons
         };
+
+        public enum MealType
+        {
+            Breakfast,
+            Snack1,
+            Lunch,
+            Snack2,
+            Dinner,
+            PreWorkout,
+            PostWorkout
+        };
     }
 }
