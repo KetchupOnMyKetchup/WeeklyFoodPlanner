@@ -5,7 +5,8 @@ namespace WeeklyFoodPlanner.Models
 {
     public class Meal : BaseEntity
     {
-        public List<HelperEnums.MealType> MealTypes { get; set; }
+        //public List<HelperEnums.MealType> MealTypes { get; set; }
+        public HelperEnums.MealType MealTypes { get; set; }
         public int NumberDaysToRepeat { get; set; }
         public Recipe Recipe { get; set; }
     }

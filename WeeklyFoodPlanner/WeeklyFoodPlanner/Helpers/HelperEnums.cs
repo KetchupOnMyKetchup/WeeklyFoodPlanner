@@ -33,5 +33,24 @@ namespace WeeklyFoodPlanner.Models
             PreWorkout,
             PostWorkout
         };
+
+        public enum Tags
+        {
+            Breakfast,
+            Snack,
+            Lunch,
+            Dinner,
+            Dessert,
+            PreWorkout,
+            PostWorkout,
+            Healthy,
+            Keto,
+            LowCarb,
+            Salad,
+            Meat,
+            HighFiber,
+            Filling,
+            QuickPrep
+        };
     }
 }
