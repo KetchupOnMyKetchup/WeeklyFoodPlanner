@@ -8,7 +8,7 @@ namespace WeeklyFoodPlanner.Views
 {
     public partial class PlannerPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        PlannerViewModel viewModel;
 
         public PlannerPage()
         {
@@ -16,7 +16,12 @@ namespace WeeklyFoodPlanner.Views
 
             HighlightDayOfTheWeek();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new PlannerViewModel();
+        }
+
+        async void AddItem_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
 
         private void HighlightDayOfTheWeek()
@@ -69,7 +74,7 @@ namespace WeeklyFoodPlanner.Views
             //ItemsListView.SelectedItem = null;
         }
 
-        async void AddItem_Clicked(object sender, EventArgs e)
+        async void AddMeal_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }

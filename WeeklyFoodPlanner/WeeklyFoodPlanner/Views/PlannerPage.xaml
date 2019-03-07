@@ -8,7 +8,11 @@
     <ContentPage.BindingContext>
         <vm:PlannerViewModel />
     </ContentPage.BindingContext>
-    
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Meal" Clicked="AddMeal_Clicked" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#2196F3</Color>
