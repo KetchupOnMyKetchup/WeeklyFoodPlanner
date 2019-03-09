@@ -13,15 +13,15 @@ using WeeklyFoodPlanner.ViewModels;
 
 namespace WeeklyFoodPlanner.Views
 {
-    public partial class ItemsPage : ContentPage
+    public partial class RecipesPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        RecipesViewModel viewModel;
 
-        public ItemsPage()
+        public RecipesPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = new RecipesViewModel();
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -30,10 +30,10 @@ namespace WeeklyFoodPlanner.Views
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new RecipeDetailPage(new RecipeDetailViewModel(item)));
 
             // Manually deselect item.
-            ItemsListView.SelectedItem = null;
+            RecipeListView.SelectedItem = null;
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)

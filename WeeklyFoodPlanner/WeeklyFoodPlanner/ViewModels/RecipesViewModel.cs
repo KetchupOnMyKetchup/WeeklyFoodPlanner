@@ -10,12 +10,12 @@ using WeeklyFoodPlanner.Views;
 
 namespace WeeklyFoodPlanner.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class RecipesViewModel : BaseViewModel
     {
         public ObservableCollection<Recipe> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public ItemsViewModel()
+        public RecipesViewModel()
         {
             Title = "Recipes List";
             Items = new ObservableCollection<Recipe>();

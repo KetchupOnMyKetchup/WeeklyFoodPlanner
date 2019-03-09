@@ -23,7 +23,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:ItemsPage />
+                <views:RecipesPage />
             </x:Arguments>
         </NavigationPage>
         

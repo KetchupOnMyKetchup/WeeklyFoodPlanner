@@ -8,18 +8,18 @@ using WeeklyFoodPlanner.ViewModels;
 
 namespace WeeklyFoodPlanner.Views
 {
-    public partial class ItemDetailPage : ContentPage
+    public partial class RecipeDetailPage : ContentPage
     {
-        ItemDetailViewModel viewModel;
+        RecipeDetailViewModel viewModel;
 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public RecipeDetailPage(RecipeDetailViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
         }
 
-        public ItemDetailPage()
+        public RecipeDetailPage()
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace WeeklyFoodPlanner.Views
                 Description = "This is an item description."
             };
 
-            viewModel = new ItemDetailViewModel(item);
+            viewModel = new RecipeDetailViewModel(item);
             BindingContext = viewModel;
         }
 

@@ -4,11 +4,11 @@ using WeeklyFoodPlanner.Models;
 
 namespace WeeklyFoodPlanner.ViewModels
 {
-    public class ItemDetailViewModel : BaseViewModel
+    public class RecipeDetailViewModel : BaseViewModel
     {
         public Recipe Recipe { get; set; }
         public string Name { get; }
-        public ItemDetailViewModel(Recipe recipe = null)
+        public RecipeDetailViewModel(Recipe recipe = null)
         {
             Title = recipe?.Name;
             Name = recipe.Name;
