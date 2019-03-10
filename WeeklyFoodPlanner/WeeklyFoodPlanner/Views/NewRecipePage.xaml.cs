@@ -8,11 +8,11 @@ using WeeklyFoodPlanner.Models;
 
 namespace WeeklyFoodPlanner.Views
 {
-    public partial class NewItemPage : ContentPage
+    public partial class NewRecipePage : ContentPage
     {
         public Recipe Item { get; set; }
 
-        public NewItemPage()
+        public NewRecipePage()
         {
             InitializeComponent();
 

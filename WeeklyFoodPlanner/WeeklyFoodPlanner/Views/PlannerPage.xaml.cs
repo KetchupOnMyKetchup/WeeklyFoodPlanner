@@ -79,6 +79,13 @@ namespace WeeklyFoodPlanner.Views
             await Navigation.PushModalAsync(new NavigationPage(new NewMealPage()));
         }
 
+        async void ShowMealsForDate_Clicked(object sender, EventArgs e)
+        {
+            // load a subset of the items list
+
+            await Navigation.PushModalAsync(new NavigationPage(new NewMealPage()));
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

@@ -18,6 +18,9 @@
     <Compile Update="Views\GroceryPage.xaml.cs">
       <DependentUpon>GroceryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\NewRecipePage.xaml.cs">
+      <DependentUpon>NewRecipePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\RecipeDetailPage.xaml.cs">
       <DependentUpon>RecipeDetailPage.xaml</DependentUpon>
     </Compile>
