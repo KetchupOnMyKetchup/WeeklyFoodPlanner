@@ -6,11 +6,11 @@ using WeeklyFoodPlanner.Models;
 
 namespace WeeklyFoodPlanner.Services
 {
-    public class MockDataStore : IDataStore<Recipe>
+    public class MockRecipeDataStore : IDataStore<Recipe>
     {
         List<Recipe> recipes;
 
-        public MockDataStore()
+        public MockRecipeDataStore()
         {
             recipes = new List<Recipe>();
             var mockRecipes = new List<Recipe>
@@ -30,14 +30,14 @@ namespace WeeklyFoodPlanner.Services
             }
         }
 
-        public async Task<bool> AddItemAsync(Recipe item)
+        public async Task<bool> AddAsync(Recipe item)
         {
             recipes.Add(item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(Recipe item)
+        public async Task<bool> UpdateAsync(Recipe item)
         {
             var oldItem = recipes.Where((Recipe arg) => arg.Id == item.Id).FirstOrDefault();
             recipes.Remove(oldItem);
@@ -46,7 +46,7 @@ namespace WeeklyFoodPlanner.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteItemAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var oldItem = recipes.Where((Recipe arg) => arg.Id == id).FirstOrDefault();
             recipes.Remove(oldItem);
@@ -54,12 +54,12 @@ namespace WeeklyFoodPlanner.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<Recipe> GetItemAsync(int id)
+        public async Task<Recipe> GetAsync(int id)
         {
             return await Task.FromResult(recipes.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Recipe>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Recipe>> GetAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(recipes);
         }

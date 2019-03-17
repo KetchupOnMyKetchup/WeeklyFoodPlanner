@@ -8,7 +8,7 @@ namespace WeeklyFoodPlanner.Models
         /// <summary>
         /// Type of meal such as breakfast, lunch, dinner, or snack.
         /// </summary>
-        public HelperEnums.MealType MealTypes { get; set; }
+        public HelperEnums.MealType MealType { get; set; }
        
         /// <summary>
         /// First day of the week the meal will be eaten. 0 = Sunday, 1 = Monday, etc.

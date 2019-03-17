@@ -24,7 +24,7 @@ namespace WeeklyFoodPlanner.Views
                     Name = "Salmon Sashimi",
                     Description = "Delish"
                 },
-                MealTypes = HelperEnums.MealType.Breakfast
+                MealType = HelperEnums.MealType.Breakfast
             };
 
             BindingContext = this;
