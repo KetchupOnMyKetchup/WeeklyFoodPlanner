@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:WeeklyFoodPlanner.ViewModels"
              x:Class="WeeklyFoodPlanner.Views.PlannerPage"
+             xmlns:helpers="clr-namespace:WeeklyFoodPlanner.Helpers"
              Title="{Binding Title}">
     
              <!--local:ViewModelLocator.AutoWireViewModel="true"
@@ -41,6 +42,7 @@
                 <Setter Property="FontSize" Value="40" />
             </Style>
         </ResourceDictionary>
+        <helpers:DayToStyleConverter x:Key="DayToStyle" DefaultStyle="{StaticResource darkerButton}" CurrentDayStyle="{StaticResource orangeButton}"/>
     </ContentPage.Resources>
     
     <ContentPage.Content>
@@ -59,13 +61,14 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <Button Text = "S" Grid.Row="0" Grid.Column="0" Style="{DynamicResource sunBtn}" Command="{Binding WeekDayCommand}" CommandParameter="Sun" />
-            <Button Text = "M" Grid.Row="0" Grid.Column="1" Style="{DynamicResource monBtn}" />
-            <Button Text = "T" Grid.Row="0" Grid.Column="2" Style="{DynamicResource tuesBtn}" />
-            <Button Text = "W" Grid.Row="0" Grid.Column="3" Style="{DynamicResource wedBtn}" />
-            <Button Text = "T" Grid.Row="0" Grid.Column="4" Style="{DynamicResource thursBtn}" />
-            <Button Text = "F" Grid.Row="0" Grid.Column="5" Style="{DynamicResource friBtn}" />
-            <Button Text = "S" Grid.Row="0" Grid.Column="6" Style="{DynamicResource satBtn}" />
+            <!--Binding command is for clicking and changing the list view of items shown-->
+            <Button Text = "S" Grid.Row="0" Grid.Column="0" Style="{Binding Today, Converter={StaticResource DayToStyle}, ConverterParameter=0}" Command="{Binding WeekDayCommand}" CommandParameter="0"/>
+            <Button Text = "M" Grid.Row="0" Grid.Column="1" Style="{Binding Today, Converter={StaticResource DayToStyle}, ConverterParameter=1}" Command="{Binding WeekDayCommand}" CommandParameter="1" />
+            <Button Text = "T" Grid.Row="0" Grid.Column="2" Style="{Binding Today, Converter={StaticResource DayToStyle}, ConverterParameter=2}" Command="{Binding WeekDayCommand}" CommandParameter="2" />
+            <Button Text = "W" Grid.Row="0" Grid.Column="3" Style="{Binding Today, Converter={StaticResource DayToStyle}, ConverterParameter=3}" Command="{Binding WeekDayCommand}" CommandParameter="3" />
+            <Button Text = "T" Grid.Row="0" Grid.Column="4" Style="{Binding Today, Converter={StaticResource DayToStyle}, ConverterParameter=4}" Command="{Binding WeekDayCommand}" CommandParameter="4" />
+            <Button Text = "F" Grid.Row="0" Grid.Column="5" Style="{Binding Today, Converter={StaticResource DayToStyle}, ConverterParameter=5}" Command="{Binding WeekDayCommand}" CommandParameter="5" />
+            <Button Text = "S" Grid.Row="0" Grid.Column="6" Style="{Binding Today, Converter={StaticResource DayToStyle}, ConverterParameter=6}" Command="{Binding WeekDayCommand}" CommandParameter="6" />
 
             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
                 <ListView x:Name="ItemsListView"

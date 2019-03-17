@@ -13,6 +13,8 @@ namespace WeeklyFoodPlanner.ViewModels
 {
     public class PlannerViewModel : BaseViewModel
     {
+        public DayOfWeek Today { get => DateTime.Today.DayOfWeek; }
+
         // use this to keep a full unfiltered list of all meals
         public List<Meal> AllItems { get; set; }
 
