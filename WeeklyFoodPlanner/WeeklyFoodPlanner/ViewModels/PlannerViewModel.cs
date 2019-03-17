@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WeeklyFoodPlanner.Models;
+using WeeklyFoodPlanner.Services;
 using WeeklyFoodPlanner.Views;
 using Xamarin.Forms;
 
@@ -11,8 +13,18 @@ namespace WeeklyFoodPlanner.ViewModels
 {
     public class PlannerViewModel : BaseViewModel
     {
-        public ObservableCollection<Recipe> Items { get; set; }
+        // use this to keep a full unfiltered list of all meals
+        public List<Meal> AllItems { get; set; }
+
+        private IMealsRepository _repo = new MealsRepository();
+
+        // change all items to meal
+        // change all recipe level to meal
+        private ObservableCollection<Recipe> items;
+
+        public ObservableCollection<Recipe> Items { get => items; set => SetProperty(ref items, value); }
         public Command LoadItemsCommand { get; set; }
+        public Command WeekDayCommand { get; set; }
 
         public PlannerViewModel()
         {
@@ -21,7 +33,11 @@ namespace WeeklyFoodPlanner.ViewModels
             OpenWebCommand = new Command(() => Device.OpenUri(new Uri("https://xamarin.com/platform")));
 
             Items = new ObservableCollection<Recipe>();
+            //Items = new ObservableCollection<Recipe>(_repo.GetMealsAsync().Result);
+
+
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            WeekDayCommand = new Command(day => ExecuteWeekDayCommand(day));
 
             MessagingCenter.Subscribe<NewRecipePage, Recipe>(this, "AddItem", async (obj, item) =>
             {
@@ -29,6 +45,14 @@ namespace WeeklyFoodPlanner.ViewModels
                 Items.Add(newItem);
                 await DataStore.AddItemAsync(newItem);
             });
+        }
+
+        private void ExecuteWeekDayCommand(object day)
+        {
+            // do logic where day of the week is clicked and filter the list of "Items" that is shown
+
+            // to clear out list
+            // Items.Clear();
         }
 
         async Task ExecuteLoadItemsCommand()

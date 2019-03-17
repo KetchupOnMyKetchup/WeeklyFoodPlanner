@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeeklyFoodPlanner.Views.PlannerPage"
              xmlns:vm="clr-namespace:WeeklyFoodPlanner.ViewModels"
+             x:Class="WeeklyFoodPlanner.Views.PlannerPage"
              Title="{Binding Title}">
     
+             <!--local:ViewModelLocator.AutoWireViewModel="true"
+                 local:ViewModelLocator.AutoWireViewModel="true"-->
+
     <ContentPage.BindingContext>
         <vm:PlannerViewModel />
     </ContentPage.BindingContext>
@@ -56,7 +59,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <Button Text = "S" Grid.Row="0" Grid.Column="0" Style="{DynamicResource sunBtn}" />
+            <Button Text = "S" Grid.Row="0" Grid.Column="0" Style="{DynamicResource sunBtn}" Command="{Binding WeekDayCommand}" CommandParameter="Sun" />
             <Button Text = "M" Grid.Row="0" Grid.Column="1" Style="{DynamicResource monBtn}" />
             <Button Text = "T" Grid.Row="0" Grid.Column="2" Style="{DynamicResource tuesBtn}" />
             <Button Text = "W" Grid.Row="0" Grid.Column="3" Style="{DynamicResource wedBtn}" />
