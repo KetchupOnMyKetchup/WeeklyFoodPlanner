@@ -12,7 +12,8 @@ namespace WeeklyFoodPlanner.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Recipe> DataStore => DependencyService.Get<IDataStore<Recipe>>() ?? new MockRecipeDataStore();
+        public IDataStore<Recipe> RecipeDataStore => DependencyService.Get<IDataStore<Recipe>>() ?? new MockRecipeDataStore();
+        public IDataStore<Meal> MealDataStore => DependencyService.Get<IDataStore<Meal>>() ?? new MockMealDataStore();
 
         bool isBusy = false;
         public bool IsBusy

@@ -50,7 +50,7 @@ namespace WeeklyFoodPlanner.Services
                      Name = mockRecipes[2].Name,
                      MealType = HelperEnums.MealType.Lunch,
                      NumberDaysToRepeat = 1,
-                     StartDay = 0,
+                     StartDay = 1,
                      Recipe = mockRecipes[2]
                 }
             };

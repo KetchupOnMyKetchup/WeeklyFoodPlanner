@@ -13,8 +13,8 @@ namespace WeeklyFoodPlanner.Models
         /// <summary>
         /// First day of the week the meal will be eaten. 0 = Sunday, 1 = Monday, etc.
         /// </summary>
-        
         public int StartDay { get; set; }
+
         /// <summary>
         /// Number of days to repeat the meal
         /// </summary>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -22,9 +23,9 @@ namespace WeeklyFoodPlanner.ViewModels
 
         // change all items to meal
         // change all recipe level to meal
-        private ObservableCollection<Recipe> items;
+        private ObservableCollection<Meal> items;
 
-        public ObservableCollection<Recipe> Items { get => items; set => SetProperty(ref items, value); }
+        public ObservableCollection<Meal> Items { get => items; set => SetProperty(ref items, value); }
         public Command LoadItemsCommand { get; set; }
         public Command WeekDayCommand { get; set; }
 
@@ -34,27 +35,33 @@ namespace WeeklyFoodPlanner.ViewModels
 
             OpenWebCommand = new Command(() => Device.OpenUri(new Uri("https://xamarin.com/platform")));
 
-            Items = new ObservableCollection<Recipe>();
+            Items = new ObservableCollection<Meal>();
             //Items = new ObservableCollection<Recipe>(_repo.GetMealsAsync().Result);
-
 
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             WeekDayCommand = new Command(day => ExecuteWeekDayCommand(day));
 
-            MessagingCenter.Subscribe<NewRecipePage, Recipe>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewMealPage, Meal>(this, "AddItem", async (obj, item) =>
             {
-                var newItem = item as Recipe;
+                var newItem = item as Meal;
                 Items.Add(newItem);
-                await DataStore.AddAsync(newItem);
+                await MealDataStore.AddAsync(newItem);
             });
         }
 
         private void ExecuteWeekDayCommand(object day)
         {
-            // do logic where day of the week is clicked and filter the list of "Items" that is shown
+            int dayInt;
+            int.TryParse(day.ToString(), out dayInt);
 
-            // to clear out list
-            // Items.Clear();
+            var result = AllItems.Where(x => x.StartDay == dayInt);
+
+            Items.Clear();
+
+            foreach (var item in result)
+            {
+                Items.Add(item);
+            }
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -67,11 +74,13 @@ namespace WeeklyFoodPlanner.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetAsync(true);
+                var items = await MealDataStore.GetAsync(true);
                 foreach (var item in items)
                 {
                     Items.Add(item);
                 }
+
+                AllItems = Items.ToList();
             }
             catch (Exception ex)
             {

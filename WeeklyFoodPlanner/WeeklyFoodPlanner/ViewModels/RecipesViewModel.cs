@@ -25,7 +25,7 @@ namespace WeeklyFoodPlanner.ViewModels
             {
                 var newItem = item as Recipe;
                 Items.Add(newItem);
-                await DataStore.AddAsync(newItem);
+                await RecipeDataStore.AddAsync(newItem);
             });
         }
 
@@ -39,7 +39,7 @@ namespace WeeklyFoodPlanner.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetAsync(true);
+                var items = await RecipeDataStore.GetAsync(true);
                 foreach (var item in items)
                 {
                     Items.Add(item);
