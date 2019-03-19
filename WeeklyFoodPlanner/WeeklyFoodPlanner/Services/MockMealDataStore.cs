@@ -21,7 +21,8 @@ namespace WeeklyFoodPlanner.Services
                     }
                 },
                 new Recipe { Id = 2, Name = "White Bean Soup", Description="White beans in soup." },
-                new Recipe { Id = 3, Name = "Garlic Honey Salmon", Description="Pan seared salmon." }
+                new Recipe { Id = 3, Name = "Garlic Honey Salmon", Description="Pan seared salmon." },
+                new Recipe { Id = 4, Name = "Cereal", Description="Cinnamon Toast Crunch" }
             };
 
             var mockMeals = new List<Meal>
@@ -31,17 +32,15 @@ namespace WeeklyFoodPlanner.Services
                      Id = 1,
                      Name = mockRecipes[0].Name,
                      MealType = HelperEnums.MealType.Breakfast,
-                     NumberDaysToRepeat = 1,
-                     StartDay = 0,
+                     Days = new List<DayOfWeek>() { DayOfWeek.Sunday, DayOfWeek.Wednesday, DayOfWeek.Thursday },
                      Recipe = mockRecipes[0]
                 },
                 new Meal
                 {
                      Id = 2,
                      Name = mockRecipes[1].Name,
-                     MealType = HelperEnums.MealType.Snack1,
-                     NumberDaysToRepeat = 1,
-                     StartDay = 0,
+                     MealType = HelperEnums.MealType.PreLunch,
+                     Days = new List<DayOfWeek>() { DayOfWeek.Sunday, DayOfWeek.Monday, DayOfWeek.Thursday },
                      Recipe = mockRecipes[1]
                 },
                 new Meal
@@ -49,8 +48,15 @@ namespace WeeklyFoodPlanner.Services
                      Id = 3,
                      Name = mockRecipes[2].Name,
                      MealType = HelperEnums.MealType.Lunch,
-                     NumberDaysToRepeat = 1,
-                     StartDay = 1,
+                     Days = new List<DayOfWeek>() { DayOfWeek.Sunday, DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Friday },
+                     Recipe = mockRecipes[2]
+                },
+                new Meal
+                {
+                     Id = 4,
+                     Name = mockRecipes[3].Name,
+                     MealType = HelperEnums.MealType.Breakfast,
+                     Days = new List<DayOfWeek>() { DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Saturday },
                      Recipe = mockRecipes[2]
                 }
             };

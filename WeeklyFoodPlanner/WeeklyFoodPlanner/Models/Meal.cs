@@ -9,16 +9,11 @@ namespace WeeklyFoodPlanner.Models
         /// Type of meal such as breakfast, lunch, dinner, or snack.
         /// </summary>
         public HelperEnums.MealType MealType { get; set; }
-       
-        /// <summary>
-        /// First day of the week the meal will be eaten. 0 = Sunday, 1 = Monday, etc.
-        /// </summary>
-        public int StartDay { get; set; }
 
         /// <summary>
-        /// Number of days to repeat the meal
+        /// Days of the week the meal should be listed under for the Planner
         /// </summary>
-        public int NumberDaysToRepeat { get; set; }
+        public List<DayOfWeek> Days { get; set; }
 
         /// <summary>
         /// Link to the recipe for easy access to recipe and for creating grocery list based on quanitity

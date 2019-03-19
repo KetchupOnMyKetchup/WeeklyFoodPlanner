@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace WeeklyFoodPlanner.Models
 {
@@ -7,6 +8,7 @@ namespace WeeklyFoodPlanner.Models
     {
         public enum QuantityType
         {
+            //[Description("")]
             Bags,
             Bottles,
             Blocks,
@@ -25,13 +27,13 @@ namespace WeeklyFoodPlanner.Models
 
         public enum MealType
         {
-            Breakfast,
-            Snack1,
-            Lunch,
-            Snack2,
-            Dinner,
-            PreWorkout,
-            PostWorkout
+            Breakfast = 0,
+            PreLunch = 1,
+            Lunch = 2,
+            SecondLunch = 3,
+            Dinner = 4,
+            PreWorkout = 5,
+            PostWorkout = 6
         };
 
         public enum Tags

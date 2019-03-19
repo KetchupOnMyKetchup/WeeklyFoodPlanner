@@ -70,7 +70,7 @@
             <Button Text = "F" Grid.Row="0" Grid.Column="5" Style="{Binding Today, Converter={StaticResource DayToStyle}, ConverterParameter=5}" Command="{Binding WeekDayCommand}" CommandParameter="5" />
             <Button Text = "S" Grid.Row="0" Grid.Column="6" Style="{Binding Today, Converter={StaticResource DayToStyle}, ConverterParameter=6}" Command="{Binding WeekDayCommand}" CommandParameter="6" />
 
-            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
+            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7">
                 <ListView x:Name="ItemsListView"
                     ItemsSource="{Binding Items}"
                     VerticalOptions="FillAndExpand"
@@ -88,7 +88,7 @@
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="16" />
-                                    <Label Text="{Binding Description}" 
+                                    <Label Text="{Binding MealType}" 
                                     LineBreakMode="NoWrap"
                                     Style="{DynamicResource ListItemDetailTextStyle}"
                                     FontSize="13" />

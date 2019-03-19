@@ -19,7 +19,6 @@ namespace WeeklyFoodPlanner.Views
             Meal = new Meal
             {
                 Name = "Meal name",
-                NumberDaysToRepeat = 1,
                 Recipe = new Recipe {
                     Name = "Salmon Sashimi",
                     Description = "Delish"

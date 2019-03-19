@@ -41,7 +41,7 @@ namespace WeeklyFoodPlanner.ViewModels
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             WeekDayCommand = new Command(day => ExecuteWeekDayCommand(day));
 
-            MessagingCenter.Subscribe<NewMealPage, Meal>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewMealPage, Meal>(this, "AddMeal", async (obj, item) =>
             {
                 var newItem = item as Meal;
                 Items.Add(newItem);
@@ -49,19 +49,15 @@ namespace WeeklyFoodPlanner.ViewModels
             });
         }
 
-        private void ExecuteWeekDayCommand(object day)
+        private void ExecuteWeekDayCommand(object selectedDay)
         {
-            int dayInt;
-            int.TryParse(day.ToString(), out dayInt);
+            Enum.TryParse(selectedDay.ToString(), out DayOfWeek day);
 
-            var result = AllItems.Where(x => x.StartDay == dayInt);
+            var result = AllItems.Where(x => x.Days.Contains(day)).OrderBy(x => (int)(x.MealType));
 
             Items.Clear();
 
-            foreach (var item in result)
-            {
-                Items.Add(item);
-            }
+            foreach (var item in result) Items.Add(item);
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -75,12 +71,10 @@ namespace WeeklyFoodPlanner.ViewModels
             {
                 Items.Clear();
                 var items = await MealDataStore.GetAsync(true);
-                foreach (var item in items)
-                {
-                    Items.Add(item);
-                }
 
-                AllItems = Items.ToList();
+                AllItems = items.ToList();
+
+                ExecuteWeekDayCommand(DateTime.Today.DayOfWeek);
             }
             catch (Exception ex)
             {
