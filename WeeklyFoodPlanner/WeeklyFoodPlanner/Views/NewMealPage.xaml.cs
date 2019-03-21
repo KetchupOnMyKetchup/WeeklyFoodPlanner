@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using WeeklyFoodPlanner.Models;
+using WeeklyFoodPlanner.Helpers;
 
 namespace WeeklyFoodPlanner.Views
 {

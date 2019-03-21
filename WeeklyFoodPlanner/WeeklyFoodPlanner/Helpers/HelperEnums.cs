@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using SQLite;
 
-namespace WeeklyFoodPlanner.Models
+namespace WeeklyFoodPlanner.Helpers
 {
+    /// <summary>
+    /// Helper Enums for the Food Planner
+    /// </summary>
     public class HelperEnums
     {
+        /// <summary>
+        /// Type of measurement quantities
+        /// Should be stored as text in SQLite
+        /// </summary>
+        [StoreAsText]
         public enum QuantityType
         {
-            //[Description("")]
             Bags,
             Bottles,
             Blocks,
@@ -25,6 +33,11 @@ namespace WeeklyFoodPlanner.Models
             Teaspoons
         };
 
+        /// <summary>
+        /// Meals of the day
+        /// Should be stored as text in SQLite
+        /// </summary>
+        [StoreAsText]
         public enum MealType
         {
             Breakfast = 0,
@@ -36,6 +49,11 @@ namespace WeeklyFoodPlanner.Models
             PostWorkout = 6
         };
 
+        /// <summary>
+        /// Tags for filtering, sorting, and categorizing recipes
+        /// Should be stored as text in SQLite
+        /// </summary>
+        [StoreAsText]
         public enum Tags
         {
             Breakfast,

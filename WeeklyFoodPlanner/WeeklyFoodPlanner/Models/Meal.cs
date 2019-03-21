@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using WeeklyFoodPlanner.Helpers;
 
 namespace WeeklyFoodPlanner.Models
 {
+    /// <summary>
+    /// Meals that can be placed on the Planner calendar of the week
+    /// </summary>
     public class Meal : BaseEntity
     {
         /// <summary>
