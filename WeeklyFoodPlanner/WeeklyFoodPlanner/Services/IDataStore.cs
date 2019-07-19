@@ -10,6 +10,6 @@ namespace WeeklyFoodPlanner.Services
         Task<bool> UpdateAsync(T item);
         Task<bool> DeleteAsync(int id);
         Task<T> GetAsync(int id);
-        Task<IEnumerable<T>> GetAsync(bool forceRefresh = false);
+        Task<IEnumerable<T>> GetAllAsync(bool forceRefresh = false);
     }
 }

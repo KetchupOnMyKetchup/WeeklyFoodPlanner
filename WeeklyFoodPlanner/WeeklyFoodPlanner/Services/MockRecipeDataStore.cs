@@ -59,7 +59,7 @@ namespace WeeklyFoodPlanner.Services
             return await Task.FromResult(recipes.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Recipe>> GetAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Recipe>> GetAllAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(recipes);
         }

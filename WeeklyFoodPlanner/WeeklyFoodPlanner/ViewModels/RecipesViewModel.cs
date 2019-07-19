@@ -24,8 +24,25 @@ namespace WeeklyFoodPlanner.ViewModels
             MessagingCenter.Subscribe<NewRecipePage, Recipe>(this, "AddItem", async (obj, item) =>
             {
                 var newItem = item as Recipe;
+
                 Items.Add(newItem);
-                await RecipeDataStore.AddAsync(newItem);
+
+                // Testing
+                var ingredient = new Ingredient() {
+                    Name = "Eggs",
+                    Quantity = 1,
+                    QuantityType = Helpers.HelperEnums.QuantityType.Boxes
+                };
+
+                bool success = await IngredientDataStore.AddAsync(ingredient);
+                var list = await IngredientDataStore.GetAllAsync();
+
+                foreach (var itm in list)
+                {
+
+                }
+                
+                //await RecipeDataStore.AddAsync(newItem);
             });
         }
 
@@ -39,7 +56,7 @@ namespace WeeklyFoodPlanner.ViewModels
             try
             {
                 Items.Clear();
-                var items = await RecipeDataStore.GetAsync(true);
+                var items = await RecipeDataStore.GetAllAsync(true);
                 foreach (var item in items)
                 {
                     Items.Add(item);

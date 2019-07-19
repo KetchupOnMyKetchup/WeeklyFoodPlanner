@@ -12,6 +12,7 @@ using Xamarin.Forms;
 
 namespace WeeklyFoodPlanner.ViewModels
 {
+
     public class PlannerViewModel : BaseViewModel
     {
         public DayOfWeek Today { get => DateTime.Today.DayOfWeek; }
@@ -53,11 +54,15 @@ namespace WeeklyFoodPlanner.ViewModels
         {
             Enum.TryParse(selectedDay.ToString(), out DayOfWeek day);
 
-            var result = AllItems.Where(x => x.Days.Contains(day)).OrderBy(x => (int)(x.MealType));
+            if (AllItems != null)
+            {
+                var result = AllItems.Where(meal => meal.Days.Contains(day))
+                    .OrderBy(meal => (int)(meal.MealType));
 
-            Items.Clear();
+                Items.Clear();
 
-            foreach (var item in result) Items.Add(item);
+                foreach (var item in result) Items.Add(item);
+            }
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -70,7 +75,7 @@ namespace WeeklyFoodPlanner.ViewModels
             try
             {
                 Items.Clear();
-                var items = await MealDataStore.GetAsync(true);
+                var items = await MealDataStore.GetAllAsync(true);
 
                 AllItems = items.ToList();
 

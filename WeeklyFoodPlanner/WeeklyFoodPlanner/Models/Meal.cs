@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using WeeklyFoodPlanner.Helpers;
 
@@ -17,11 +18,13 @@ namespace WeeklyFoodPlanner.Models
         /// <summary>
         /// Days of the week the meal should be listed under for the Planner
         /// </summary>
+        [Ignore]
         public List<DayOfWeek> Days { get; set; }
 
         /// <summary>
         /// Link to the recipe for easy access to recipe and for creating grocery list based on quanitity
         /// </summary>
+        [Ignore]
         public Recipe Recipe { get; set; }
     }
 }

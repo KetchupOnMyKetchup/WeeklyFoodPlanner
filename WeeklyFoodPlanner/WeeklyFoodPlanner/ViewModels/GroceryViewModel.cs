@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace WeeklyFoodPlanner.ViewModels
 {
-    public class GroceryViewModel : BaseViewModel
+    public class NewMealViewModel : BaseViewModel
     {
-        public GroceryViewModel()
+        public NewMealViewModel()
         {
             Title = "Grocery List";
 
